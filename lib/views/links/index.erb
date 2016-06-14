@@ -4,7 +4,10 @@
   <% @links.each do |link| %>
     <li>
       Title: <%= link.title %> <br>
-      URL:   <a href="<%= link.url %>"><%= link.url %></a>
+      URL:   <a href="<%= link.url %>"><%= link.url %></a> <br>
+      Tags: <% link.tags.each do |tag| %> 
+			      <i>#<%= tag.name %></i>
+			  <% end %>
     </li>
   <% end %>
 </ul>
