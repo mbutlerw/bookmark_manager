@@ -1,6 +1,6 @@
 feature 'Viewing links' do
 
-  scenario 'I can see existing links on the links page' do
+  scenario 'to view saved links' do
     # We can use `.create`, which we used in irb to make a Student, within our test!
     Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
 
@@ -12,6 +12,21 @@ feature 'Viewing links' do
 
     within 'ul#links' do
       expect(page).to have_content('Makers Academy')
+    end
+  end
+end
+
+feature 'Adding links' do
+
+  scenario 'to add new link to list' do
+    visit '/links/new'
+
+    fill_in :url, with: 'http://www.google.com' 
+    fill_in :title, with: 'Google Search'
+    click_button 'Add Bookmark'
+
+    within 'ul#links' do
+      expect(page).to have_content('Google Search')
     end
   end
 end
