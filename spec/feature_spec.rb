@@ -67,7 +67,9 @@ feature 'Viewing links' do
       expect(page).to have_content('Bubble Bobble')
     end
   end
+end
 
+feature 'multiple tags' do
   scenario 'I can add multiple tags to a new link' do
     visit '/links/new'
     fill_in 'url',   with: 'http://www.makersacademy.com/'
