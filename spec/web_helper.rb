@@ -18,7 +18,7 @@ end
 def sign_up
   visit('/')
   click_link('Sign Up')
-  fill_in(:email, with: 'Riya')
+  fill_in(:email, with: 'riya.pabari@gmail.com')
   fill_in(:password, with: 'password')
   click_button('Submit')
 end
