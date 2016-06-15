@@ -5,7 +5,7 @@
     <li>
       Title: <%= link.title %>
       URL: <%= link.url %>
-      <form action="/links"><input type="submit" value="Add Tag"></form>
+      Tags: <%= link.tags.map{|tag| tag.name}.join(", ") %>
     </li>
   <% end %>
 </ul>
