@@ -15,6 +15,7 @@ group :other_gems do
   gem "dm-postgres-adapter"
   gem 'sinatra'
   gem 'rake'
+  gem 'bcrypt'
 end
 
 
