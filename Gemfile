@@ -14,6 +14,7 @@ group :other_gems do
   gem "data_mapper"
   gem "dm-postgres-adapter"
   gem 'sinatra'
+  gem 'rake'
 end
 
 
