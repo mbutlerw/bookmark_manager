@@ -20,5 +20,15 @@ def sign_up
   click_link('Sign Up')
   fill_in(:email, with: 'riya.pabari@gmail.com')
   fill_in(:password, with: 'password')
+  fill_in(:password_confirmation, with: 'password')
+  click_button('Submit')
+end
+
+def sign_up_pw_mismatch
+  visit('/')
+  click_link('Sign Up')
+  fill_in(:email, with: 'riya.pabari@gmail.com')
+  fill_in(:password, with: 'password')
+  fill_in(:password_confirmation, with: 'different')
   click_button('Submit')
 end
