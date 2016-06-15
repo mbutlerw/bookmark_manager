@@ -1,3 +1,4 @@
+
 feature 'Adds new link' do
 
   scenario 'User can add links to a page' do

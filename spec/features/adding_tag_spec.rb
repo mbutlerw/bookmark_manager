@@ -1,3 +1,4 @@
+
 feature 'adding a tag' do
 
   scenario 'User can add a tag to a link' do

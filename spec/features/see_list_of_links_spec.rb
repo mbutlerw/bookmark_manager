@@ -1,3 +1,4 @@
+
 feature 'Viewing links' do
 
   scenario 'User can see existing links on a page' do
