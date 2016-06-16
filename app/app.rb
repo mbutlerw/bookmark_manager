@@ -5,7 +5,7 @@ require_relative 'data_mapper_setup'
 
 
 class BookmarkManager < Sinatra::Base
-  
+
   enable :sessions
   set :session_secret, 'super secret'
 
@@ -13,8 +13,8 @@ class BookmarkManager < Sinatra::Base
     erb(:index)
   end
 
-  get '/users/sign_up' do
-    erb(:'users/sign_up')
+  get '/users/new' do
+    erb(:'users/new')
   end
 
   post '/users' do
@@ -34,7 +34,7 @@ class BookmarkManager < Sinatra::Base
   get '/links/new' do
   	erb(:'links/new')
   end
-  
+
   post '/links' do
   	link = Link.new(url: params[:url], title: params[:title])
     params[:tags].gsub(' ', '').split(',').each {|tag| link.tags << Tag.first_or_create(name: tag) }

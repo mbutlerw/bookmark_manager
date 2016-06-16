@@ -1,6 +1,13 @@
-<title>Bookmark Manager</title>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookmark Manager</title>
+  </head>
 
-<% if current_user %>
-	Welcome, <%= current_user.email %>!
-<% end %>
-<%= yield %>
+  <body>
+    <% if current_user %>
+      Welcome, <%= current_user.email %>!
+    <% end %>
+    <%= yield %>  <!-- this then yields to the view which has been called by your controller -->
+  </body>
+</html>

@@ -15,20 +15,12 @@ def create_link_bubbles
   click_button('Create Link')
 end
 
-def sign_up
-  visit('/')
-  click_link('Sign Up')
-  fill_in(:email, with: 'riya.pabari@gmail.com')
-  fill_in(:password, with: 'password')
-  fill_in(:password_confirmation, with: 'password')
-  click_button('Submit')
-end
-
-def sign_up_pw_mismatch
-  visit('/')
-  click_link('Sign Up')
-  fill_in(:email, with: 'riya.pabari@gmail.com')
-  fill_in(:password, with: 'password')
-  fill_in(:password_confirmation, with: 'different')
-  click_button('Submit')
+def sign_up(email: 'alice@example.com',
+              password: '12345678',
+              password_confirmation: '12345678')
+    visit '/users/new'
+    fill_in :email, with: email
+    fill_in :password, with: password
+    fill_in :password_confirmation, with: password_confirmation
+    click_button 'Sign up'
 end
