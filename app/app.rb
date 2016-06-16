@@ -2,9 +2,12 @@
 ENV['RACK_ENV'] ||= "development"
 require 'sinatra/base'
 require_relative 'data_mapper_setup'
+require 'sinatra/flash'
 
 
 class BookmarkManager < Sinatra::Base
+
+  register Sinatra::Flash
 
   enable :sessions
   set :session_secret, 'super secret'
@@ -14,15 +17,21 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/users/new' do
+    @user = User.new
     erb(:'users/new')
   end
 
   post '/users' do
-    user = User.create(email: params[:email],
+    @user = User.new(email: params[:email],
                        password: params[:password],
                        password_confirmation: params[:password_confirmation])
-    session[:user_id] = user.id
-    redirect('/links') #personalised links later
+    if @user.save
+      session[:user_id] = @user.id
+      redirect('/links') #personalised links later
+    else
+      erb :'users/new'
+      flash.now[:notice] = "Password and confirmation password do not match"
+    end
   end
 
   get '/links' do
@@ -37,7 +46,7 @@ class BookmarkManager < Sinatra::Base
 
   post '/links' do
   	link = Link.new(url: params[:url], title: params[:title])
-    params[:tags].gsub(' ', '').split(',').each {|tag| link.tags << Tag.first_or_create(name: tag) }
+    params[:tags].split(',').each {|tag| link.tags << Tag.first_or_create(name: tag.strip) }
   	link.save
   	redirect('/links')
   end
