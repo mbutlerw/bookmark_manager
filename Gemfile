@@ -11,6 +11,7 @@ gem 'rspec'
 gem 'sinatra'
 gem 'rake'
 gem 'bcrypt'
+gem 'sinatra-flash'
 
 
 
