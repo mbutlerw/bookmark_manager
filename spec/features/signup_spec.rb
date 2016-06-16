@@ -10,4 +10,13 @@ feature 'Password confirmation' do
 		expect{ sign_up }.to change(User, :count).by(1)
 	end
 
+	scenario "user can't sign up without email" do
+		expect{ sign_up(email: nil) }.not_to change(User, :count)
+	end
+
+	scenario "user can't sign up with invalid email" do
+			expect{ sign_up(email: 'email@emailing') }.not_to change(User, :count)
+	end
+
+
 end
