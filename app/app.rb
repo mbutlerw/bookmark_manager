@@ -51,16 +51,14 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/users' do
-    # we just initialize the object
-    # without saving it. It may be invalid
     @user = User.new(email: params[:email],
                 password: params[:password],
                 password_confirmation: params[:password_confirmation])
-    if @user.save #save returns true/false depending on whether the model is successfully saved to the database
+    if @user.save 
       session[:user_id] = @user.id
       redirect '/links'
-    else #redirect to the sign up form again
-      flash.now[:notice] = "Password and confirmation password do match"
+    else 
+      flash.now[:errors] = @user.errors.full_messages
       erb :'users/new'
     end
   end
